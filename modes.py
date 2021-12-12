@@ -1,3 +1,4 @@
+"""LINEAR FADE"""
 def linear(one, two, count):
     difference = abs(one-two)
     rev, adjust = False, one
@@ -14,8 +15,4 @@ def linearFade(firstColor, secondColor, count):
     return list(zip(linear(r1, r2, count), linear(g1, g2, count), linear(b1, b2, count)))
 
 
-BLUE = (0, 0, 255)
-PINK = (255, 0, 0)
-COUNT = 86
-
-print(linearFade(BLUE, PINK, COUNT))
+""""""
