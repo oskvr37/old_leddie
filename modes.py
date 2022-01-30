@@ -14,5 +14,4 @@ def linearFade(firstColor, secondColor, count):
     r2, g2, b2 = secondColor
     return list(zip(linear(r1, r2, count), linear(g1, g2, count), linear(b1, b2, count)))
 
-
-""""""
+"""NEW"""
