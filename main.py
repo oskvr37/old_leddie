@@ -12,8 +12,8 @@ async def root():
 
 COLORS = {'red': (255, 0, 0), 'blue': (0, 0, 255)}
 
-@app.post("/color")
-async def setColor(color: str):
+@app.get("/color")
+async def color(color: str):
     try:
         set_color = COLORS[color]
         pixel.fill(set_color)
