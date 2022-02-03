@@ -4,4 +4,4 @@ import neopixel
 PIN = board.D18
 LED_COUNT = 86
 
-LEDS = neopixel.NeoPixel(PIN, LED_COUNT, auto_write=False)
+pixel = neopixel.NeoPixel(board.D18, 86, pixel_order=neopixel.RGB)

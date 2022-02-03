@@ -1,4 +1,4 @@
-from config import LEDS
+from config import pixel
 
-LEDS.fill((255,255,255))
-LEDS.write()
+pixel.fill((255,255,255))
+pixel.write()
