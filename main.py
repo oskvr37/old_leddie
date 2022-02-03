@@ -1,5 +1,2 @@
-from modes import linearFade
-from leds import Leds
-
-
-leds = Leds()
+from LEDS import LEDS
+LEDS.fill((255,255,255))
