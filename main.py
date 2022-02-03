@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from config import pixel
+from config import COLORS, pixel
 
 app = FastAPI()
 # uvicorn main:app --reload
@@ -7,10 +7,9 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    available_colors = " ".join(COLORS)
+    return {"available_colors": available_colors}
 
-
-COLORS = {'red': (255, 0, 0), 'blue': (0, 0, 255), 'magenta': (255, 0, 255)}
 
 @app.get("/color")
 async def color(color: str):
@@ -23,6 +22,7 @@ async def color(color: str):
     except Exception as e:
         print(e)
         return {"error": e}
+
 
 @app.get("/rgb")
 async def rgb(r: int, g: int, b:int):
