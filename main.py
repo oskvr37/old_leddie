@@ -18,6 +18,7 @@ async def color(color: str):
         set_color = COLORS[color]
         pixel.fill(set_color)
         pixel.write()
+        print(f'set color to {set_color}')
         return {"message": "success"}
     except Exception as e:
         return {"error": e}
