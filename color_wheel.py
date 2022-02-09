@@ -20,12 +20,3 @@ def hue_rgb(hue) -> tuple[int, int, int]:
     else:
         return 255, 255, 255
     return int(r), int(g), int(b)
-
-
-from config import pixel
-hue = 0
-while True:
-    if hue > 360:
-        hue = 0
-    pixel.fill(hue_rgb(hue))
-    hue += 1
