@@ -50,3 +50,16 @@ async def hue(hue: int):
     except Exception as e:
         print(e)
         return {"error": e}
+
+
+@app.post("/color")
+async def rgb(r: int, g: int, b:int):
+    try:
+        set_rgb = (r, g, b)
+        pixel.fill(set_rgb)
+        pixel.write()
+        print(f'set color to {set_rgb}')
+        return {"message": "success"}
+    except Exception as e:
+        print(e)
+        return {"error": e}
