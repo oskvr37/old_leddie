@@ -1,6 +1,7 @@
 import json
 from fastapi import FastAPI, Request
 from config import COLORS, pixel
+from typing import Any, Dict, AnyStr, List, Union
 
 from color_wheel import hue_rgb
 
@@ -62,4 +63,13 @@ async def color(request: Request):
     except Exception as e:
         print(e)
         return {"error": e}
-        
+
+
+JSONObject = Dict[AnyStr, Any]
+JSONArray = List[Any]
+JSONStructure = Union[JSONArray, JSONObject]
+
+
+@app.post("/kolor")
+async def root(arbitrary_json: JSONStructure = None):
+    return {"received_data": arbitrary_json}
