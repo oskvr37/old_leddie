@@ -1,9 +1,10 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from leds import pixel
+from leds import Pixel
 
 app = FastAPI()
+pixel = Pixel()
 # uvicorn main:app --reload
 
 origins = [
@@ -33,9 +34,9 @@ async def root():
 
 
 @app.get("/color")
-async def color(request: Request):
+async def color():
     try:
-        return pixel.a
+        return {'color': pixel.color}
     except Exception as e:
         print(e)
         return {"error": e}
@@ -45,8 +46,8 @@ async def color(request: Request):
 async def color(request: Request):
     try:
         data = await request.json()  # {'r': 182, 'g': 255, 'b': 122}
-        pixel.fill(list(data.values()))
-        pixel.write()
+        rgb = list(data.values())
+        pixel.fill(rgb)
         return data
     except Exception as e:
         print(e)
