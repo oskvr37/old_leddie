@@ -73,6 +73,7 @@ async def hue(hue: int):
 async def color(request: Request):
     try:
         data = await request.json()
+        print(data)
         pixel.fill(data)
         pixel.write()
         return data
