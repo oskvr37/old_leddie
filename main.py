@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from config import COLORS, pixel
 
 from color_wheel import hue_rgb
@@ -53,12 +53,12 @@ async def hue(hue: int):
 
 
 @app.post("/color")
-async def rgb(r: int, g: int, b:int):
+async def color(request: Request):
     try:
-        set_rgb = (r, g, b)
-        pixel.fill(set_rgb)
+        data = request.json()
+        pixel.fill(0, 0, 0)
         pixel.write()
-        print(f'set color to {set_rgb}')
+        print(f'set color to {data}')
         return {"message": "success"}
     except Exception as e:
         print(e)
