@@ -1,5 +1,7 @@
 import json
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+
 from config import COLORS, pixel
 from typing import Any, Dict, AnyStr, List, Union
 
@@ -8,6 +10,19 @@ from color_wheel import hue_rgb
 app = FastAPI()
 # uvicorn main:app --reload
 
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
