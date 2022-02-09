@@ -72,19 +72,10 @@ async def hue(hue: int):
 @app.post("/color")
 async def color(request: Request):
     try:
-        # pixel.fill(0, 0, 0)
-        # pixel.write()
-        return await request.json()
+        data = await request.json()
+        pixel.fill(data)
+        pixel.write()
+        return data
     except Exception as e:
         print(e)
         return {"error": e}
-
-
-JSONObject = Dict[AnyStr, Any]
-JSONArray = List[Any]
-JSONStructure = Union[JSONArray, JSONObject]
-
-
-@app.post("/kolor")
-async def root(arbitrary_json: JSONStructure = None):
-    return {"received_data": arbitrary_json}
