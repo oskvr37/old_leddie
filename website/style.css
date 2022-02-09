@@ -1,0 +1,36 @@
+body {
+  color: #fff;
+  background: #171F30;
+  line-height: 150%;
+  font-size: 18px;
+}
+
+.wrap {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.wrap .half {
+  padding: 32px 32px;
+}
+
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 28px);
+  grid-template-rows: repeat(2, 28px);
+  grid-gap: 6px;
+  margin-bottom: 1em;
+}
+
+.swatch {
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+a {
+  color: MediumSlateBlue;
+}
