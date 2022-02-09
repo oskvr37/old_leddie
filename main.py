@@ -72,9 +72,8 @@ async def hue(hue: int):
 @app.post("/color")
 async def color(request: Request):
     try:
-        data = await request.json()
-        print(data)
-        pixel.fill(data)
+        data = await request.json()  # {'r': 182, 'g': 255, 'b': 122}
+        pixel.fill(list(data.values()))
         pixel.write()
         return data
     except Exception as e:
