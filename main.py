@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from config import COLORS, pixel
 
+from color_wheel import hue_rgb
+
 app = FastAPI()
 # uvicorn main:app --reload
 
@@ -31,6 +33,19 @@ async def rgb(r: int, g: int, b:int):
         pixel.fill(set_rgb)
         pixel.write()
         print(f'set color to {set_rgb}')
+        return {"message": "success"}
+    except Exception as e:
+        print(e)
+        return {"error": e}
+
+
+@app.get("/hue")
+async def hue(hue: int):
+    try:
+        set_rgb = hue_rgb(hue)
+        pixel.fill(set_rgb)
+        pixel.write()
+        print(f'set with hue to {set_rgb}')
         return {"message": "success"}
     except Exception as e:
         print(e)
