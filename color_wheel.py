@@ -1,4 +1,4 @@
-def hue_rgb(hue) -> tuple[int, int, int]:
+def hue_rgb(hue):
     STEP = 4.25
     if hue <= 60:
         r, g, b = 255, hue * 255 / 60, 0
