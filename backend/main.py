@@ -9,7 +9,6 @@ pixel = Pixel()
 
 origins = [
     "http://localhost",
-    "http://localhost:8000",
     "*"
 ]
 
@@ -25,11 +24,7 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {
-        """
-        <div>
-        siema
-        </div>
-        """
+
     }
 
 

@@ -20,6 +20,10 @@ class Pixel:
             self.pixel.write()
         self.fill((0, 0, 0))
 
+    # def info(self):
+    #     latest_colors = None
+    #     favourites = None
+
     def fill(self, rgb):
         for color in modes.smooth_rgb(self.color, rgb):
             self.pixel.fill(color)
