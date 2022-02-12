@@ -10,7 +10,7 @@ var colorPicker = new iro.ColorPicker(".colorPicker", {
   borderColor: "#fff" });
 
 colorPicker.on('input:end', function(color){
-  setColor(color.rgb);
+  setColor(color.hexString);
 });
 
 // handle click events on the swatch
@@ -23,6 +23,6 @@ swatchGrid.addEventListener('click', function (e) {
   if (clickTarget.dataset.color) {
     // update the color picker
     colorPicker.color.set(clickTarget.dataset.color);
-    setColor(colorPicker.color.rgb);
+    setColor(colorPicker.color.hexString);
   }
 });
