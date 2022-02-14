@@ -20,7 +20,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+global favorites
+favorites = ['#b00b69', '#ff00ff']
+
+global latest
 latest = []
+
+global current_color
+current_color = ''
 
 
 @app.get("/")
@@ -31,7 +38,7 @@ async def root():
 @app.get("/color")
 async def color():
     try:
-        return {'color': pixel.color, 'latest': latest}
+        return {'color': current_color, 'latest': latest, 'favorites': favorites}
     except Exception as e:
         print(e)
         return {"error": e}
@@ -57,8 +64,9 @@ async def color(request: Request):
         pixel.fill(rgb_color)
         if hex_color not in latest:
             latest.insert(0, hex_color)
-            if len(latest) > 9:
+            if len(latest) > 10:
                 latest.pop()
+        current_color = hex_color
     except:
         raise HTTPException(status_code=500, detail={'success': False, 'message': 'pixel problem'})
     raise HTTPException(status_code=200, detail={'success': True, 'latest': latest})
