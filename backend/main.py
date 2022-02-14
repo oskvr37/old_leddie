@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-latest: list[str] = []
+latest = []
 
 
 @app.get("/")
