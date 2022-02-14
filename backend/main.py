@@ -20,14 +20,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-global favorites
-favorites = ['#b00b69', '#ff00ff']
 
-global latest
-latest = []
+class Backend:
+    def __init__(self, favorites) -> None:
+        self.favorites = favorites
+        self.latest = []
+        self.current_color = []
 
-global current_color
-current_color = ''
+    def colorChange(self, color):
+        if color not in self.latest:
+            self.latest.insert(0, color)
+            if len(self.latest) > 10:
+                self.latest.pop()
+
+    def info(self):
+        return {'success': True, 'color': self.current_color, 'latest': self.latest, 'favorites': self.favorites}
+
+
+backend = Backend(['#b00b69', '#ff00ff'])
 
 
 @app.get("/")
@@ -38,7 +48,7 @@ async def root():
 @app.get("/color")
 async def color():
     try:
-        return {'color': current_color, 'latest': latest, 'favorites': favorites}
+        return backend.info()
     except Exception as e:
         print(e)
         return {"error": e}
@@ -62,14 +72,10 @@ async def color(request: Request):
     # fill pixel with rgb
     try:
         pixel.fill(rgb_color)
-        if hex_color not in latest:
-            latest.insert(0, hex_color)
-            if len(latest) > 10:
-                latest.pop()
-        current_color = hex_color
+        backend.colorChange(hex_color)
     except:
         raise HTTPException(status_code=500, detail={'success': False, 'message': 'pixel problem'})
-    raise HTTPException(status_code=200, detail={'success': True, 'latest': latest})
+    raise HTTPException(status_code=200, detail=backend.info())
 
 
 @app.post("/fade")
@@ -92,4 +98,4 @@ async def color(request: Request):
         pixel.fade(rgb_one, rgb_two)
     except:
         raise HTTPException(status_code=500, detail={'success': False, 'message': 'pixel problem'})
-    raise HTTPException(status_code=200, detail={'success': True, 'latest': latest})
+    raise HTTPException(status_code=200, detail=backend.info())
