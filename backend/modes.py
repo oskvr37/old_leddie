@@ -25,7 +25,7 @@ def hue_rgb(hue):
 	return int(r), int(g), int(b)
 
 
-def smooth_rgb(rgb_1, rgb_2, smoothness):
+def smooth_rgb(rgb_1, rgb_2, smoothness=20):
 	def fade(one, two):
 		lower, reverse = one, False
 		if one > two: lower, reverse = two, True
