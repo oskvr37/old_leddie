@@ -9,23 +9,28 @@ LED_COUNT = 86
 
 
 class Pixel:
-    def __init__(self) -> None:
-        self.pixel = neopixel.NeoPixel(board.D18, 86, auto_write=False)
-        self.color = (0, 0, 0)
-        self.startup()
+	def __init__(self) -> None:
+		self.led_count, self.pin = LED_COUNT, PIN
+		self.pixel = neopixel.NeoPixel(self.pin, self.led_count, auto_write=False)
+		self.color: tuple = (0, 0, 0)
+		self.startup()
 
-    def startup(self):
-        for hue in range(0, 361):
-            self.pixel.fill(modes.hue_rgb(hue))
-            self.pixel.write()
-        self.fill((0, 0, 0))
+	def startup(self):
+		for hue in range(0, 360):
+			self.pixel.fill(modes.hue_rgb(hue))
+			self.pixel.write()
+		self.fill((0, 0, 0))
 
-    # def info(self):
-    #     latest_colors = None
-    #     favourites = None
+	def fill(self, rgb):
+		for color in modes.smooth_rgb(self.color, rgb):
+			self.pixel.fill(color)
+			self.pixel.write()
+		self.color = color
 
-    def fill(self, rgb):
-        for color in modes.smooth_rgb(self.color, rgb):
-            self.pixel.fill(color)
-            self.pixel.write()
-        self.color = color
+	def fade(self, color_one, color_two):
+		index = 0
+		colors = modes.smooth_rgb(color_one, color_two, self.led_count)
+		for color in colors:
+			self.pixel[index] = color
+			index += 1
+		self.pixel.write()

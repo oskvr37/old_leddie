@@ -56,3 +56,26 @@ async def color(request: Request):
     except:
         raise HTTPException(status_code=500, detail='pixel problem')
     raise HTTPException(status_code=200, detail='success')
+
+
+@app.post("/fade")
+async def color(request: Request):
+    # receive colors in hex value
+    try:
+        data = await request.json()
+        hex_one, hex_two = data['hex_one'], data['hex_two']
+    except:
+        raise HTTPException(status_code=400, detail='didnt receive hex colors')
+
+    # convert hex to rgb
+    try:
+        rgb_one, rgb_two = ImageColor.getcolor(hex_one, 'RGB'), ImageColor.getcolor(hex_two, 'RGB')
+    except:
+        raise HTTPException(status_code=400, detail='wrong hex colors')
+
+    # fade pixel with rgb
+    try:
+        pixel.fade(rgb_one, rgb_two)
+    except:
+        raise HTTPException(status_code=500, detail='pixel problem')
+    raise HTTPException(status_code=200, detail='success')
