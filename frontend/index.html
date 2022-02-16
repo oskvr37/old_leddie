@@ -4,112 +4,121 @@
     <meta charset="UTF-8" />
     <title>Leddie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
   </head>
   <body>
-    <html>
-      <head> </head>
-      <body>
-        <div class="wrap">
-          <div class="half readout">
-            <h1>Leddie</h1>
-            <div class="swatchGrid" id="swatch-grid">
-              <div
-                class="swatch"
-                data-color="#ffffff"
-                style="background: #ffffff"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#5f2cdd"
-                style="background: #5f2cdd"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#752c53"
-                style="background: #752c53"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#3b8456"
-                style="background: #3b8456"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#a0563d"
-                style="background: #a0563d"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#5f5850"
-                style="background: #5f5850"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#c3c3c6"
-                style="background: #c3c3c6"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#edf145"
-                style="background: #edf1ff"
-              ></div>
+    <!-- partial:index.partial.html -->
+    <div id="particles-js"></div>
 
-              <div
-                class="swatch"
-                data-color="#da3855"
-                style="background: #da3855"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#eda541"
-                style="background: #eda541"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#f5ea5a"
-                style="background: #f5ea5a"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#75b85b"
-                style="background: #75b85b"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#66a5d7"
-                style="background: #66a5d7"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#817799"
-                style="background: #817799"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#e17ea5"
-                style="background: #e17ea5"
-              ></div>
-              <div
-                class="swatch"
-                data-color="#f4cdaf"
-                style="background: #f4cdaf"
-              ></div>
-            </div>
-          </div>
-          <div class="half">
-            <div class="colorPicker"></div>
+    <main class="glass">
+      <div class="wrap">
+        <div class="half">
+          <h1>Leddie</h1>
+          <div class="swatchGrid" id="swatch-grid">
+            <div
+              class="swatch"
+              data-color="#ffffff"
+              style="background: #ffffff"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#5f2cdd"
+              style="background: #5f2cdd"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#752c53"
+              style="background: #752c53"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#3b8456"
+              style="background: #3b8456"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#a0563d"
+              style="background: #a0563d"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#5f5850"
+              style="background: #5f5850"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#c3c3c6"
+              style="background: #c3c3c6"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#edf145"
+              style="background: #edf1ff"
+            ></div>
+
+            <div
+              class="swatch"
+              data-color="#da3855"
+              style="background: #da3855"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#eda541"
+              style="background: #eda541"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#f5ea5a"
+              style="background: #f5ea5a"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#75b85b"
+              style="background: #75b85b"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#66a5d7"
+              style="background: #66a5d7"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#817799"
+              style="background: #817799"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#e17ea5"
+              style="background: #e17ea5"
+            ></div>
+            <div
+              class="swatch"
+              data-color="#f4cdaf"
+              style="background: #f4cdaf"
+            ></div>
           </div>
         </div>
-      </body>
-    </html>
+        <div class="half">
+          <div class="colorPicker"></div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cldup.com/S6Ptkwu_qA.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
     <script src="./picker.js"></script>
-    <script src="./api.js"></script>
+    <script src="./particles.js"></script>
   </body>
 </html>

@@ -1,13 +1,26 @@
 // Create a new color picker instance
 // https://iro.js.org/guide.html#getting-started
+function setColor(hex) {
+  console.log('set color to', hex);
+
+  fetch("http://192.168.100.4:8000/color", {
+    body: JSON.stringify({
+      hex: hex
+    }),
+    method: "POST",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
 
 
 var colorPicker = new iro.ColorPicker(".colorPicker", {
   // Option guide: https://iro.js.org/guide.html#color-picker-options
-  width: 280,
+  width: 300,
   color: "rgb(255, 0, 0)",
-  borderWidth: 1,
-  borderColor: "#fff" });
+  borderWidth: 2,
+  borderColor: "#fff"
+});
 
 colorPicker.on('input:end', function(color){
   setColor(color.hexString);

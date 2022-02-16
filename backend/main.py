@@ -27,7 +27,8 @@ class Backend:
         self.latest = []
         self.current_color = []
 
-    def colorChange(self, color):
+    def setColor(self, color):
+        self.current_color = color
         if color not in self.latest:
             self.latest.insert(0, color)
             if len(self.latest) > 10:
@@ -72,7 +73,7 @@ async def color(request: Request):
     # fill pixel with rgb
     try:
         pixel.fill(rgb_color)
-        backend.colorChange(hex_color)
+        backend.setColor(hex_color)
     except:
         raise HTTPException(status_code=500, detail={'success': False, 'message': 'pixel problem'})
     raise HTTPException(status_code=200, detail=backend.info())
