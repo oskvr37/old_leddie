@@ -1,36 +1,73 @@
 body {
-  color: #fff;
-  background: #171F30;
-  line-height: 150%;
-  font-size: 18px;
+    color: #fff;
+    background: #171f30;
+    line-height: 150%;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 2.25em;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+canvas {
+    display: block;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #294270;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding: 1em 1em;
+    font-family: "Open Sans", sans-serif;
 }
 
 .wrap {
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
 .wrap .half {
-  padding: 32px 32px;
+    padding: 32px 32px;
 }
 
 .swatchGrid {
-  display: grid;
-  grid-template-columns: repeat(8, 28px);
-  grid-template-rows: repeat(2, 28px);
-  grid-gap: 6px;
-  margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: repeat(8, 28px);
+    grid-template-rows: repeat(2, 28px);
+    grid-gap: 6px;
+    margin-bottom: 1em;
 }
 
 .swatch {
-  border-radius: 4px;
-  cursor: pointer;
+    box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, .4);
+    border-radius: 0.5em;
+    transition: transform .2s
 }
 
-a {
-  color: MediumSlateBlue;
+.swatch:hover {
+    transform: scale(1.2)
+}
+
+.glass {
+    background: rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 0 1em 0 rgba( 0, 0, 0, 0.2 );
+    backdrop-filter: blur( 6px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 1em;
 }
